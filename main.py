@@ -6,5 +6,6 @@ def get_book_text(filepath):
 
         return file_contents
 def main():
-        get_book_text(/home/kaya/workspace/github.com/kayaozdogan/bookbot/books)
+        book_text = get_book_text("/home/kaya/workspace/github.com/kayaozdogan/bookbot/books/frankenstein.txt")
+        print(book_text)
 main()

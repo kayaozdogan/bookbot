@@ -8,4 +8,5 @@ def get_book_text(filepath):
 def main():
         book_text = get_book_text("/home/kaya/workspace/github.com/kayaozdogan/bookbot/books/frankenstein.txt")
         print(book_text)
-main()
+
+ain()

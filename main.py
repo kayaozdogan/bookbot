@@ -1,4 +1,5 @@
 from stats import get_num_words
+from stats import character_count
 
 def get_book_text(filepath):
     with open(filepath) as f:
@@ -12,7 +13,12 @@ def get_book_text(filepath):
 def main():
         book_text = get_book_text("/home/kaya/workspace/github.com/kayaozdogan/bookbot/books/frankenstein.txt")
         i = get_num_words(book_text)
+        chars_dict = character_count(book_text)
+
         print(f"{i} words found in the document")
+
+        for key, value in chars_dict.items():
+             print(f"'{key}': {value}")
         
 
 main()

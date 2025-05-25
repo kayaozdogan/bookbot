@@ -20,4 +20,9 @@ def character_count(c_text):
             dictio[char] = 1
     return dictio
 
+def sort_on(dictionary):
+    return dictionary["num"]
 
+def reverse_dict(dict):
+    dict.sort(reverse=True, key=sort_on)
+    return dict

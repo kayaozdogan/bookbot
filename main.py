@@ -1,24 +1,35 @@
+import sys
 from stats import get_num_words
 from stats import character_count
+from stats import reverse_dict
 
 def get_book_text(filepath):
     with open(filepath) as f:
-        file_contents = f.read()
+        return f.read()
 
-
-
-        return file_contents
-
+def make_report(dictio):
+    report = []
+    for char, count in dictio.items():
+        if char.isalpha():
+            report.append({"char": char, "num": count})
+    return report
 
 def main():
-        book_text = get_book_text("/home/kaya/workspace/github.com/kayaozdogan/bookbot/books/frankenstein.txt")
-        i = get_num_words(book_text)
-        chars_dict = character_count(book_text)
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
 
-        print(f"{i} words found in the document")
+    book_path = sys.argv[1]
+    book_text = get_book_text(book_path)
 
-        for key, value in chars_dict.items():
-             print(f"'{key}': {value}")
-        
+    word_count = get_num_words(book_text)
+    print(f"Found {word_count} total words")
+
+    char_counts = character_count(book_text)
+    report = make_report(char_counts)
+    sorted_report = reverse_dict(report)
+
+    for entry in sorted_report:
+        print(f"{entry['char']}: {entry['num']}")
 
 main()
